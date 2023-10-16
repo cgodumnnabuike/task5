@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Member;
+use App\Models\School;
 use Illuminate\Http\Request;
 
 class MemberController extends Controller
@@ -20,7 +22,8 @@ class MemberController extends Controller
      */
     public function create()
     {
-        return view('members.create');
+        $schools = School::all();
+        return view('members.create', compact('schools'));
     }
 
     /**
@@ -28,7 +31,21 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'school_id' => 'required',
+        ]);
+    
+        // Create a new member using the passed data
+        Member::create([
+            'name' => $request->name,
+            'email' => $request->email,
+        ]);
+        
+        $member->schools()->sync([$data['school']]);
+        // Redirect to Index if succesfull
+        return redirect()->route('members.index')->with('success', 'Member created successfully');
     }
 
     /**
@@ -36,7 +53,7 @@ class MemberController extends Controller
      */
     public function show(string $id)
     {
-        //
+        
     }
 
     /**

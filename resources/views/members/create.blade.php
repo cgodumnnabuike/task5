@@ -17,10 +17,10 @@
         <div class="form-group">
             <label for="school">School:</label>
             <select name="school" id="school" class="form-control" required>
-                <option value="School 1">King College London</option>
+                <option value="School 1">Kirklees College</option>
                 <option value="School 2">Greenhead College</option>
-                <option value="School 2">Kirklees College</option>
-                <option value="School 2">Edward College</option>
+                <option value="School 3">King College London</option>
+                <!-- Add more school options as needed -->
             </select>
         </div>
         <button type="submit" class="btn btn-primary">Add Member</button>
